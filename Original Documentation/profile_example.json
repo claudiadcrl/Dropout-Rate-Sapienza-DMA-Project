@@ -1,0 +1,42 @@
+{
+	"esito": {
+		"flagEsito": 0,
+		"id": 0,
+		"nota": "",
+		"ritorno": null
+	},
+	"ritorno": {
+		"accessoPrenotazione": true,
+		"accessoPrenotazioneNote": "",
+		"annoAccaAtt": "2022",
+		"annoAccaCors": "2022",
+		"annoCorso": "3",
+		"annoDiNascita": "2000",
+		"cittadinanza": "ITALIANA",
+		"cittadinanzaEn": "",
+		"codCittadinanza": "000",
+		"codCorso": "29923",
+		"comuneNasciata": "",
+		"creditiTotali": "180",
+		"erasmus": "NO",
+		"facolta": "INGEGNERIA DELL'INFORMAZIONE, INFORMATICA E STATISTICA",
+		"flagIdentificato": 1,
+		"indiMail": "21224@dummy",
+		"indiMailIstituzionale": "dummy.21224@studenti.uniroma1.it",
+		"isErasmus": false,
+		"isMedicina": false,
+		"iscritto": "SI",
+		"laureaItaFlag": "N",
+		"luogoDiNascita": "ROMA (RM)",
+		"mailConfermata": "S",
+		"nazioneNascita": "ITALIA",
+		"nomeCorso": "INFORMATICA [L-270 - Ordin. 2019]",
+		"primaIscr": "2019/2020",
+		"provinciaNascita": "ROMA",
+		"sesso": "M",
+		"tipoCorso": "27",
+		"tipoIscrizione": "IN CORSO",
+		"tipoStudente": 2,
+		"ultIscr": "2021/2022"
+	}
+}
