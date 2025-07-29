@@ -145,3 +145,69 @@ summary(log_anova_isee)
 # of freedom and the p-value are the same.
 
 # N.B.: For both versions of the test, NA values have been ignored.
+
+# Trying the T test for ISEE ----------------------------------------------
+
+# Take this alternative with a grain of salt as neither the Shapiro test nor the
+# Kolmogorov-Smirnov tests worked to check for the normality assumption.
+
+# Alternative check using QQ-Plots.
+
+values_true <- na.omit(dropout_filtered$valoreIntero[dropout_filtered$Dropout == TRUE])
+
+qqnorm(values_true, main = "Q-Q Plot: valoreIntero (Dropout == TRUE)")
+qqline(values_true, col = "blue")
+
+values_false <- na.omit(dropout_filtered$valoreIntero[dropout_filtered$Dropout == FALSE])
+
+qqnorm(values_false, main = "Q-Q Plot: valoreIntero (Dropout == FALSE)")
+qqline(values_false, col = "darkgreen")
+
+# The T test tries to determine whether the difference in mean of two groups of
+# the same variable is statistically significant.
+# H0: m1 = m2.
+# H1: m1 and m2 are different, or one between m1 < m2 or m1 > m2.
+
+t.test(valoreIntero ~ Dropout, data = dropout_filtered, na.action = na.omit)
+t.test(log1p(valoreIntero) ~ Dropout, data = dropout_filtered, na.action = na.omit)
+
+# Having found p < 0.05 in both cases, the null hypothesis is rejected, meaning
+# that the means of the two groups have a statistically significant difference.
+
+# Trying the T test for Age (Carlo) ----------------------------------------------
+
+# Create the QQ-Plots to assess whether data are approximately normally distributed.
+
+values_true <- na.omit(dropout_filtered$eta[dropout_filtered$Dropout == TRUE])
+
+qqnorm(values_true, main = "Q-Q Plot: eta (Dropout == TRUE)")
+qqline(values_true, col = "blue")
+
+values_false <- na.omit(dropout_filtered$eta[dropout_filtered$Dropout == FALSE])
+
+qqnorm(values_false, main = "Q-Q Plot: eta (Dropout == FALSE)")
+qqline(values_false, col = "darkgreen")
+
+# The plots suggest that the normality assumption fails.
+
+# Plot a sideways box plot of age.
+
+ggplot(dropout_filtered[!is.na(dropout_filtered$eta), ], aes(x = Dropout, y = eta, fill = Dropout)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.6) +
+  scale_fill_manual(
+    values = c("FALSE" = "#FF6961",
+               "TRUE" = "#77DD77")) +
+  scale_color_manual(
+    values = c("FALSE" = "#FF6961",
+               "TRUE" = "#77DD77")) +
+  labs(title = "Age by Dropout Status",
+       x = "Dropout Status",
+       y = "Age") +
+  theme_minimal()
+
+# Run the T test.
+
+t.test(eta ~ Dropout, data = dropout_filtered, na.action = na.omit)
+
+# Having found p < 0.05, the null hypothesis is rejected, meaning that the means
+# across the groups are different, although the difference is really small.
