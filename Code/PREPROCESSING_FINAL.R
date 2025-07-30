@@ -33,7 +33,7 @@ labels <- c("1", "2", "3", "4") # labels
 # 3: 30.001 - 60.000
 # 4: >60.000
 
-dropout_filtered$bracket <- cut(temp$isee, breaks = breaks, labels = labels, right = TRUE, include.lowest = TRUE)
+dropout_filtered$bracket <- cut(dropout_filtered$valoreIntero, breaks = breaks, labels = labels, right = TRUE, include.lowest = TRUE)
 dropout_filtered <- dropout_filtered %>% 
   relocate(bracket, .after = valoreIntero)
 View(dropout_filtered)
