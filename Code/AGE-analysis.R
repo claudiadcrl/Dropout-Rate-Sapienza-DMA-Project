@@ -95,10 +95,12 @@ boxplot(eta ~ Dropout, data = dropout_filtered,
         ylab = "Age",
         col = c("#2A52BE", "orange"))
 
-#Since i can't do ANOVA or t-test because of different variance
-#do BINNING and do Chi-Squared
-# + contingency table and mosaic plot/barplot
+#T test, assume normality by CLT and different variances
+result<-t.test(eta ~ Dropout, data = dropout_filtered)
+print(result)
+#statistically significant difference in mean age between the two dropout groups 
 
+#To confirm association, do BINNING + CHI-SQUARED
 breaksAge <- c(18, 22, 26, 30, Inf) # breaks
 labelsAge <- c("18-21", "22-25", "26-29", "30+") # labels
 
