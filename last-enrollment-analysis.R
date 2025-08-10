@@ -41,15 +41,9 @@ summary(anova_sup)
 #There is a statistically significant difference in the ultSup values
 #(last passed exam) between dropout groups.
 
-#Logistic regression
-df$Dropout <- as.factor(df$Dropout)
-model <- glm(Dropout ~ ultPren + ultSup + annoAccaCors, data = df, family = binomial)
-summary(model)
-#All 3 variables are significant predictors of dropout.
-#Last booked exam has the strongest positive link.
-#Recent enrollment (higher year) reduces dropout likelihood.
 
 #Chi-squared test X
 #we cant do it some <5
 #tbl <- table(df$Dropout, cut(df$ultSup, breaks = 5))
+
 #chisq.test(tbl)$expected
